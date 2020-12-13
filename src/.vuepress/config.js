@@ -4,7 +4,7 @@ module.exports = {
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#title
    */
-  title: 'Vuepress Docs Boilerplate',
+  title: 'Apirocket Docs',
   /**
    * Ref：https://v1.vuepress.vuejs.org/config/#description
    */
@@ -27,7 +27,7 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
-    repo: '',
+    repo: 'https://github.com/apirocket/documentation',
     editLinks: false,
     docsDir: '',
     editLinkText: '',
@@ -41,10 +41,6 @@ module.exports = {
         text: 'Config',
         link: '/config/'
       },
-      {
-        text: 'VuePress',
-        link: 'https://v1.vuepress.vuejs.org'
-      }
     ],
     sidebar: {
       '/guide/': [
