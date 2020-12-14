@@ -20,6 +20,7 @@ module.exports = {
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
     ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }]
   ],
+  
 
   /**
    * Theme configuration, here is the default theme configuration for VuePress.
@@ -27,29 +28,39 @@ module.exports = {
    * ref：https://v1.vuepress.vuejs.org/theme/default-theme-config.html
    */
   themeConfig: {
+	logo: '/assets/img/logo-rounded.png',
     repo: 'https://github.com/apirocket/documentation',
-    editLinks: false,
-    docsDir: '',
-    editLinkText: '',
-    lastUpdated: false,
+    editLinks: true,
+    docsDir: 'src',
+    editLinkText: 'Edit this page on GitHub',
+	lastUpdated: false,
     nav: [
       {
-        text: 'Guide',
+        text: 'Quickstart',
         link: '/guide/',
       },
       {
-        text: 'Config',
-        link: '/config/'
+        text: 'GraphQL API',
+        link: '/api/'
       },
     ],
     sidebar: {
       '/guide/': [
         {
-          title: 'Guide',
+          title: 'Quickstart',
           collapsable: false,
           children: [
             '',
             'using-vue',
+          ]
+        }
+      ],
+      '/api/': [
+        {
+          title: 'GraphQL API',
+          collapsable: false,
+          children: [
+            '',
           ]
         }
       ],
