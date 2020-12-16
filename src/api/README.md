@@ -4,13 +4,13 @@
 
 ## API Explorer
 
-The easiest way to access our GraphQL API is using the "Explorer API". You can access this application from the project or collection view where you will find a shortcut button.
+The easiest way to access our GraphQL API is using the **"Explorer API"**. You can access this application from the project or collection view where you will find a shortcut button.
 
 <video width="100%" muted loop autoplay playsinline>
   <source src="/assets/video/api-explorer.mp4" type="video/mp4">
 </video> 
 
-Thanks to the "API Explorer" you can experiment with your GraphQL API, launch queries and see results, create new documents generating mutations and consult the documentation of the data scheme. Everything in a very simple and intuitive way.
+Thanks to the **"API Explorer"** you can experiment with your GraphQL API, launch queries and see results, create new documents generating mutations and consult the documentation of the data scheme. Everything in a very simple and intuitive way.
 
 ## Endpoint
 
@@ -57,13 +57,10 @@ curl --request POST \
   --data '{"query":"COPY_AND_PASTE_YOUR_QUERY_HERE"}'
 ```
 
-
-### Postman
-
 ### Javascript fetch
 
 ``` js
-let query = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
+const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
 
 fetch("https://graphql.apirocket.io", {
 	"method": "POST",
@@ -71,7 +68,7 @@ fetch("https://graphql.apirocket.io", {
 		"Content-Type": "application/json",
 		"Authorization": "Bearer YOUR_API_KEY_TOKEN",
 	},
-	"body": JSON.stringify({query: query})
+	"body": JSON.stringify({query: myQuery})
 	})
 	.then(response => response.json())
 	.then(json => console.log(json.data))
@@ -79,3 +76,22 @@ fetch("https://graphql.apirocket.io", {
 ```
 
 ### Javascript Axios
+
+``` js
+import axios from "axios";
+const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
+
+const options = {
+	method: 'POST',
+	url: 'https://graphql.apirocket.io/',
+	headers: {
+	"Content-Type": "application/json",
+	"Authorization": "Bearer YOUR_API_KEY_TOKEN"
+	},
+	data: JSON.stringify({query: myQuery})
+};
+
+axios.request(options)
+	.then(response => console.log(response.data))
+	.catch(err => { console.error(err); });	
+```
