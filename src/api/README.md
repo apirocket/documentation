@@ -95,3 +95,28 @@ axios.request(options)
 	.then(response => console.log(response.data))
 	.catch(err => { console.error(err); });	
 ```
+
+### NodeJS Native
+
+``` js
+import https from 'https';
+const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
+
+const options = {
+	hostname: 'graphql.apirocket.io',
+	method: 'POST',
+	headers: {
+		'Content-Type': 'application/json',
+		'Authorization': 'Bearer YOUR_API_KEY_TOKEN',
+	}
+};
+
+const req = https.request(options, (res) => {
+	let data = '';
+	res.on('data', (chunk) => data += chunk);
+	res.on('end', () => console.log(data));
+});
+req.on('error', (err) => console.error(err));
+req.write(JSON.stringify({ query: myQuery }));
+req.end();
+```
