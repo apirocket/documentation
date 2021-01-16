@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.0.4] - 2021-01-16
+
+### Added
+- Nodejs native example code
 
 
 ## [0.0.3] - 2020-12-16
