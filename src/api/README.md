@@ -46,7 +46,7 @@ When a client gets rate limited the API responds with the `429 Too Many Requests
 
 ## Code examples
 
-### Terminal (curl)
+### Terminal cURL
 
 ``` bash
 curl --request POST \
@@ -54,69 +54,75 @@ curl --request POST \
   --header 'Authorization: Bearer YOUR_API_KEY_TOKEN' \
   --header 'Content-Type: application/json' \
   --header 'Accept: application/json' \
-  --data '{"query":"COPY_AND_PASTE_YOUR_QUERY_HERE"}'
+  --data '{"query":"YOUR_QUERY_HERE"}'
 ```
 
-### Javascript fetch
+### Javascript Fetch
 
 ``` js
-const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
+// Set the main variables and your custom QUERY and KEY TOKEN.
+const url = 'https://graphql.apirocket.io';
+const method = 'POST';
+const headers = {
+	'Content-Type': 'application/json',
+	Authorization: 'Bearer YOUR_API_KEY_TOKEN',
+};
+const body = JSON.stringify({
+	query: `YOUR_QUERY_HERE`
+});
 
-fetch("https://graphql.apirocket.io", {
-	"method": "POST",
-	"headers": {
-		"Content-Type": "application/json",
-		"Authorization": "Bearer YOUR_API_KEY_TOKEN",
-	},
-	"body": JSON.stringify({query: myQuery})
-	})
-	.then(response => response.json())
-	.then(json => console.log(json.data))
-	.catch(err => { console.error(err); });
+fetch(url, { method, body })
+	.then((data) => data.json())
+	.then((response) => console.log(response))
+	.catch(err => console.error(err));
 ```
 
 ### Javascript Axios
 
 ``` js
+// Import the main dependencies.
 import axios from "axios";
-const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
 
-const options = {
-	method: 'POST',
-	url: 'https://graphql.apirocket.io/',
-	headers: {
-	"Content-Type": "application/json",
-	"Authorization": "Bearer YOUR_API_KEY_TOKEN"
-	},
-	data: JSON.stringify({query: myQuery})
+// Set the main variables and your custom QUERY and KEY TOKEN.
+const url = 'https://graphql.apirocket.io';
+const method = 'POST';
+const headers = {
+	'Content-Type': 'application/json',
+	Authorization: 'Bearer YOUR_API_KEY_TOKEN',
 };
+const data = JSON.stringify({
+	query: `YOUR_QUERY_HERE`
+});
 
-axios.request(options)
-	.then(response => console.log(response.data))
-	.catch(err => { console.error(err); });	
+axios.request({ url, method, headers, data })
+	.then((response) => console.log(response))
+	.catch((err) => console.error(err));	
 ```
 
 ### NodeJS Native
 
 ``` js
+// Import the main dependencies.
 import https from 'https';
-const myQuery = `COPY_AND_PASTE_YOUR_QUERY_HERE`;
 
-const options = {
-	hostname: 'graphql.apirocket.io',
-	method: 'POST',
-	headers: {
-		'Content-Type': 'application/json',
-		'Authorization': 'Bearer YOUR_API_KEY_TOKEN',
-	}
+// Set the main variables and your custom QUERY and KEY TOKEN.
+const hostname = 'graphql.apirocket.io';
+const method = 'POST';
+const headers = {
+	'Content-Type': 'application/json',
+	Authorization: 'Bearer YOUR_API_KEY_TOKEN',
 };
+const body = JSON.stringify({
+	query: `YOUR_QUERY_HERE`
+});
 
-const req = https.request(options, (res) => {
-	let data = '';
-	res.on('data', (chunk) => data += chunk);
-	res.on('end', () => console.log(data));
+// Create a request instance.
+const req = https.request({ hostname, method, headers }, (res) => {
+	let response = '';
+	res.on('data', (chunk) => response += chunk);
+	res.on('end', () => console.log(response));
 });
 req.on('error', (err) => console.error(err));
-req.write(JSON.stringify({ query: myQuery }));
+req.write(body);
 req.end();
 ```
